@@ -32,6 +32,7 @@ pipeline{
           attachLog: true,
           attachmentsPattern: '**/${JOB_BASE_NAME}-${BUILD_NUMBER}*',
           body: '${SCRIPT, template="groovy-html.template"}'
+            )
       }        
     }
 }
