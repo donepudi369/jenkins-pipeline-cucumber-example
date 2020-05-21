@@ -23,7 +23,7 @@ pipeline{
         }
         stage ('Junit') {
           steps {
-            archive "target/**/*"
+            //archive "target/**/*"
             junit 'target/surefire-reports/*.xml'
           }
         }
