@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent {
+      label 'maven'
+    }
     stages {
         stage ('Compile Stage') {
             steps {
@@ -20,8 +22,8 @@ pipeline{
             }
         }
     }
-    post {
-      failure {
+    post{
+      always {
         emailext(
           to: 'surendra.donepudi@pdisoftware.com',
           replyTo: 'surendra.donepudi@pdisoftware.com',
