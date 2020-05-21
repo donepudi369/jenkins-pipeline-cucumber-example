@@ -1,7 +1,5 @@
 pipeline{
-    agent {
-      label 'maven'
-    }
+    agent any
     stages {
         stage ('Compile Stage') {
             steps {
@@ -21,5 +19,17 @@ pipeline{
                     jsonReportDirectory: 'target'
             }
         }
+    }
+    post {
+      failure {
+        emailext(
+          to: 'surendra.donepudi@pdisoftware.com',
+          replyTo: 'surendra.donepudi@pdisoftware.com',
+          subject: "'${JOB_NAME}' (${BUILD_NUMBER}) ${currentBuild.currentResult}",
+          mimeType: 'text/html',
+          attachLog: true,
+          attachmentsPattern: '**/${JOB_BASE_NAME}-${BUILD_NUMBER}*',
+          body: '${SCRIPT, template="groovy-html.template"}'
+      }        
     }
 }
