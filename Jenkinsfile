@@ -23,9 +23,12 @@ pipeline{
         }
         stage('copy cucumber'){
           steps {
-            dir("/var/jenkins_home/jobs/MCS-Dev/jobs/Test_Jobs/jobs/cucumber-reports/builds/15/cucumber-html-reports/${BUILD_NUMBER}/cucumber-html-reports/") {
-              sh "pwd"
-            }
+              script { 
+                  sh "cp /var/jenkins_home/jobs/MCS-Dev/jobs/Test_Jobs/jobs/cucumber-reports/builds/15/cucumber-html-reports/${BUILD_NUMBER}/cucumber-html-reports/* ${workspace}"
+              }
+            //dir("/var/jenkins_home/jobs/MCS-Dev/jobs/Test_Jobs/jobs/cucumber-reports/builds/15/cucumber-html-reports/${BUILD_NUMBER}/cucumber-html-reports/") {
+              //sh "pwd"
+            //}
           }
         }
         stage ('Junit') {
