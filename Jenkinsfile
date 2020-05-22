@@ -21,38 +21,11 @@ pipeline{
                     jsonReportDirectory: 'target'
             }
         }
-    }
-}
-
-
-
-pipeline{
-    agent {
-      label 'maven'
-    }
-    stages {
-        stage ('Compile Stage') {
-            steps {
-              sh 'mvn clean install'
-            }
-        }
-    stage ('Test Stage') {
-            steps {
-               sh 'mvn test'
-            }
-        }
-
-        stage ('Cucumber Reports') {
-            steps {
-                cucumber buildStatus: "UNSTABLE",
-                    fileIncludePattern: "**/cucumber.json",
-                    jsonReportDirectory: 'target'
-            }
-        }
         stage('copy cucumber'){
           steps {
             dir("../builds/${BUILD_NUMBER}/") {
               sh "pwd"
+            }
           }
         }
         stage ('Junit') {
