@@ -23,7 +23,7 @@ pipeline{
         }
         stage('copy cucumber'){
           steps {
-            dir("../builds/${BUILD_NUMBER}/") {
+            dir("/var/jenkins_home/jobs/MCS-Dev/jobs/Test_Jobs/jobs/cucumber-reports/builds/15/cucumber-html-reports/${BUILD_NUMBER}/cucumber-html-reports/") {
               sh "pwd"
             }
           }
