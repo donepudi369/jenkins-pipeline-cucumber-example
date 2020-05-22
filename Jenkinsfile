@@ -23,14 +23,15 @@ pipeline{
         }
         stage('copy cucumber'){
           steps {
-              //script { 
+              script { 
+                  sh "ls /var"
                   //sh "cp /var/jenkins_home/jobs/MCS-Dev/jobs/Test_Jobs/jobs/cucumber-reports/builds/15/cucumber-html-reports/${BUILD_NUMBER}/cucumber-html-reports/* ${workspace}"
-              //}
-            dir("/var/jenkins_home/jobs/MCS-Dev/jobs/Test_Jobs/jobs/cucumber-reports/builds/${BUILD_NUMBER}/cucumber-html-reports/") {
-              sh "pwd"
-              sh "ls -la"
-              sh "cp * ${workspace}/cucumber-html-reports"
-            }
+              }
+            //dir("/var/jenkins_home/jobs/MCS-Dev/jobs/Test_Jobs/jobs/cucumber-reports/builds/${BUILD_NUMBER}/cucumber-html-reports/") {
+             // sh "pwd"
+             // sh "ls -la"
+             // sh "cp * ${workspace}/cucumber-html-reports"
+           // }
           }
         }
         stage ('Junit') {
